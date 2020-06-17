@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const expressHandlebars = require("express-handlebars");
 const bodyParser= require("body-parser");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Initialize Express
 const app = express();
@@ -20,12 +20,13 @@ app.engine("handlebars", expressHandlebars({
 app.set ("view engine", "handlebars");
 
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
 
 app.use(router);
 
 const db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
 
 mongoose.connect(db, function(error){
     if (error){

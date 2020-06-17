@@ -1,7 +1,7 @@
 const scrape = require("../scripts/scrape");
 
 const headlinesController = require("../controllers/headlines");
-const notesController = require("../controllers/notes");
+const notesController = require("../controllers/note");
 
 
 module.exports = function(router) {
@@ -47,7 +47,7 @@ module.exports = function(router) {
         });
     });
 
-    router.patach("/api/headlines", function(req, res){
+    router.patch("/api/headlines", function(req, res){
         headlinesController.update(req.body, function(err, data){
             res.json(data);
         });
